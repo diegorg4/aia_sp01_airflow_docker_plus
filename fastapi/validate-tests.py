@@ -35,6 +35,17 @@ def run_tests():
 def run_tests():
     return get_response_from_pytest(TEST_TRANSFORM_RESULT_FILE_PATH, TEST_TRANSFORM_FILE_PATH)
 
+@app.get('/api/v1/get_jupyter_token')
+def get_jupyter_token():
+    result = subprocess.run(['jupyter','notebook','list'], capture_output=True)
+    output = result.stdout.decode('utf-8')
+    lines = output.strip().split('\n')
+    for line in lines:
+        if "token" in line:
+            token = line.split(" ")[0].split("=")[-1]
+    
+    return {"token":token}
+
 if __name__ == '__main__':
     import uvicorn
     uvicorn.run(app, host='0.0.0.0', port=8000)

@@ -1,0 +1,15 @@
+/.ipynb_checkpoints
+/.pytest_cache
+/dataset
+/images
+/queries
+/src
+/tests
+ASSIGNMENT.md
+EDA.ipynb
+*.db
+README.md
+*.log
+*.pyc
+/fastapi/tmp/*
+/airflow/logs/*
